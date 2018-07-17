@@ -1,0 +1,11 @@
+C:\csharp\repos\euler\Euler5\Euler5\bin\Debug\netcoreapp2.0\Euler5.deps.json
+C:\csharp\repos\euler\Euler5\Euler5\bin\Debug\netcoreapp2.0\Euler5.runtimeconfig.json
+C:\csharp\repos\euler\Euler5\Euler5\bin\Debug\netcoreapp2.0\Euler5.runtimeconfig.dev.json
+C:\csharp\repos\euler\Euler5\Euler5\bin\Debug\netcoreapp2.0\Euler5.dll
+C:\csharp\repos\euler\Euler5\Euler5\bin\Debug\netcoreapp2.0\Euler5.pdb
+C:\csharp\repos\euler\Euler5\Euler5\obj\Debug\netcoreapp2.0\Euler5.csprojAssemblyReference.cache
+C:\csharp\repos\euler\Euler5\Euler5\obj\Debug\netcoreapp2.0\Euler5.csproj.CoreCompileInputs.cache
+C:\csharp\repos\euler\Euler5\Euler5\obj\Debug\netcoreapp2.0\Euler5.AssemblyInfoInputs.cache
+C:\csharp\repos\euler\Euler5\Euler5\obj\Debug\netcoreapp2.0\Euler5.AssemblyInfo.cs
+C:\csharp\repos\euler\Euler5\Euler5\obj\Debug\netcoreapp2.0\Euler5.dll
+C:\csharp\repos\euler\Euler5\Euler5\obj\Debug\netcoreapp2.0\Euler5.pdb

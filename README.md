@@ -1,4 +1,4 @@
 # euler
 Project Euler problems
 
-Solved : 1 - 2
+Solved : 1 - 3, 5
