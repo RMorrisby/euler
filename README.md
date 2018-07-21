@@ -11,3 +11,4 @@ Loop-flow control : 36
 OO-design : 36
 Unit tests : 3, 36
 Structs : 3
+Exceptions : 36d (some unit-tests demonstrate try-catch)
