@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Euler3
+namespace Euler3a
 {
 
     /*
@@ -12,12 +12,12 @@ namespace Euler3
      * 
      * TODO Unit tests!
      */
-    class PrimeHelper
+    public class PrimeHelper
     {
         /*
          * Definition of prime : only divisible by itself and 1. Therefore, a prime number has only one prime factor : itself (1 is not prime)
          */
-        public static bool isPrime(long num)
+        public static bool IsPrime(long num)
         {
             // Some safety - don't evaluate numbers < 2, instead immediately return false
             if (num < 2)
@@ -25,12 +25,12 @@ namespace Euler3
                 return false;
             }
 
-            List<long> primeFactors = getPrimeFactors(num);
+            List<long> primeFactors = GetPrimeFactors(num);
             //p($"Prime factors of {num} :: {string.Join(", ", primeFactors)}");
             return (primeFactors.Count == 1);
         }
 
-        public static long getLargestPrimeFactor(long num)
+        public static long GetLargestPrimeFactor(long num)
         {
             // Some safety - don't evaluate numbers < 2, instead immediately return null
             if (num < 2)
@@ -38,7 +38,7 @@ namespace Euler3
                 throw new InvalidOperationException("Don't call getLargestPrimeFactor() with a number less than 2");
             }
 
-            List<long> primeFactors = getPrimeFactors(num);
+            List<long> primeFactors = GetPrimeFactors(num);
             primeFactors.Sort();
             return primeFactors.Last();
         }
@@ -47,7 +47,7 @@ namespace Euler3
          * For the given int, return the list of its prime factors. Will include itself if it is prime.
          * Will not compress the list (i.e. the list may naturally return duplicates)
          */
-        public static List<long> getPrimeFactors(long num)
+        public static List<long> GetPrimeFactors(long num)
         {
             List<long> primeFactors = new List<long>();
             // Some safety - don't evaluate numbers < 2, instead immediately return the empty list
@@ -56,7 +56,7 @@ namespace Euler3
                 return primeFactors;
             }
 
-            LowestAndHighestFactor factorPair = getLowestAndHighestFactor(num);
+            LowestAndHighestFactor factorPair = GetLowestAndHighestFactor(num);
             long lowestFactor = factorPair.lowest;
             long highestFactor = factorPair.highest;
 
@@ -67,7 +67,7 @@ namespace Euler3
                 return primeFactors;
             }
 
-            primeFactors.AddRange(getPrimeFactors(highestFactor));
+            primeFactors.AddRange(GetPrimeFactors(highestFactor));
             primeFactors.Add(lowestFactor);
 
             return primeFactors;
@@ -77,7 +77,7 @@ namespace Euler3
          * For the given int, determine the lowest and highest factor (not necessarily prime, and not including 1) and return a LowestAndHighestFactor object.
          * E.g. for 24, this method would return 2 and 12; 19 would return 19 and 19.
          */
-        public static LowestAndHighestFactor getLowestAndHighestFactor(long num)
+        public static LowestAndHighestFactor GetLowestAndHighestFactor(long num)
         {
             // Some safety - don't evaluate numbers < 2, instead immediately return null
             if (num < 2)
@@ -116,7 +116,7 @@ namespace Euler3
             return pair;
         }
 
-        public static void p(Object s)
+        public static void P(Object s)
         {
             Console.WriteLine(s);
         }
@@ -125,7 +125,7 @@ namespace Euler3
     /*
      * Simple struct that holds two longs. Intended to hold the lowest and highest factor of a number (such that lowest * highest == the number)
      */
-    struct LowestAndHighestFactor
+    public struct LowestAndHighestFactor
     {
         public long lowest;
         public long highest;

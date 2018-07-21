@@ -1,9 +1,9 @@
 ﻿using System;
-using static Euler3.PrimeHelper;
+using static Euler3a.PrimeHelper;
 
 // Problem 3 : find the largest prime factor of a number
 
-namespace Euler3
+namespace Euler3a
 {
     class Program
     {
@@ -14,8 +14,8 @@ namespace Euler3
             //    p($"{i} :: {isPrime(i)}");
             //}
             long k = 600851475143;
-            p($"{k} :: {isPrime(k)}");
-            p($"{k} :: {getLargestPrimeFactor(k)}");
+            p($"{k} :: {IsPrime(k)}");
+            p($"{k} :: {GetLargestPrimeFactor(k)}");
         }
 
 
