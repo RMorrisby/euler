@@ -6,6 +6,8 @@ using System.Linq;
 
 // The beginnings of OO-coding - a very small Main()
 
+// Still can't write any unit-tests, because Solve() doesn't return anything
+
 namespace Euler36a
 {
     class Euler36a

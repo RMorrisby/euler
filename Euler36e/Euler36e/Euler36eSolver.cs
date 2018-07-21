@@ -13,7 +13,7 @@ namespace Euler36e
     {
 
         /// <summary>
-        /// Solves Euler problem 36 for a given maximum number, up to Int32.MaxValue
+        /// Solves Euler problem 36 for a given maximum number, from 10 up to Int32.MaxValue
         /// </summary>
         /// <param name="limit"></param>
         /// <returns>long</returns>
@@ -24,6 +24,12 @@ namespace Euler36e
             {
                 throw new Exception($"Euler36Solver.Solve cannot solve for numbers greater than {maxLimit}");
             }
+
+            if (limit < 10)
+            {
+                throw new ArgumentException($"Euler36Solver.Solve cannot solve for numbers less than 10");
+            }
+
 
             var palendromes = new HashSet<Euler36Number>();
             for (int i = 1; i < limit; i++)

@@ -8,11 +8,11 @@ namespace Euler36c
     /// <summary>
     /// Class that actually solves Euler problem 36
     /// </summary>
-    class Euler36cSolver
+    public class Euler36cSolver
     {
 
         /// <summary>
-        /// Solves Euler problem 36 for a given maximum number, up to Int32.MaxValue
+        /// Solves Euler problem 36 for a given maximum number, from 10 up to Int32.MaxValue
         /// </summary>
         /// <param name="limit"></param>
         /// <returns>long</returns>
@@ -21,8 +21,14 @@ namespace Euler36c
             int maxLimit = Int32.MaxValue;
             if (limit > maxLimit)
             {
-                throw new Exception($"Euler36Solver.Solve cannot solve for numbers greater than {maxLimit}");
+                throw new ArgumentException($"Euler36Solver.Solve cannot solve for numbers greater than {maxLimit}");
             }
+
+            if (limit < 10)
+            {
+                throw new ArgumentException($"Euler36Solver.Solve cannot solve for numbers less than 10");
+            }
+
 
             var palendromes = new HashSet<int>();
             for (int i = 1; i < limit; i++)
@@ -50,7 +56,7 @@ namespace Euler36c
         /// </summary>
         /// <param name="i"></param>
         /// <returns>bool</returns>
-        static bool IsBase10Palendrome(int i)
+        public static bool IsBase10Palendrome(int i)
         {
             // Convert to String, reverse & compare - is it a palendrome?
             String base10String = i.ToString();
@@ -66,7 +72,7 @@ namespace Euler36c
         /// </summary>
         /// <param name="i"></param>
         /// <returns>bool</returns>
-        static bool IsBase2Palendrome(int i)
+        public static bool IsBase2Palendrome(int i)
         {
             // Convert to base-2, convert to String, reverse & compare - is it a palendrome?
             String base2String = Convert.ToString(i, 2);

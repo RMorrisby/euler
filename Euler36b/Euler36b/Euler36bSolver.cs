@@ -8,7 +8,7 @@ namespace Euler36b
     /// <summary>
     /// Class that actually solves Euler problem 36
     /// </summary>
-    class Euler36bSolver
+   public class Euler36bSolver
     {
 
         /// <summary>
