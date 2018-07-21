@@ -1,16 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Linq;
 
-//Find the sum of all base-10 numbers, less than one million, which are palindromic in base-10 and base-2
-
-namespace Euler36
+namespace Euler36b
 {
-    class Program
+    /// <summary>
+    /// Class that actually solves Euler problem 36
+    /// </summary>
+    class Euler36bSolver
     {
-        static void Main(string[] args)
+
+        /// <summary>
+        /// Solves Euler problem 36 for a given maximum number, up to Int32.MaxValue
+        /// </summary>
+        /// <param name="limit"></param>
+        /// <returns>long</returns>
+        public long Solve(int limit)
         {
-            int limit = 1000000; // 1 million
+            int maxLimit = Int32.MaxValue;
+            if (limit > maxLimit)
+            {
+                throw new Exception($"Euler36Solver.Solve cannot solve for numbers greater than {maxLimit}");
+            }
+
             var palendromes = new HashSet<int>();
             for (int i = 1; i < limit; i++)
             {
@@ -44,7 +57,7 @@ namespace Euler36
             }
 
             long total = palendromes.ToList().Sum();
-            Console.WriteLine($"Total of all base-10 and base-2 palendromes is {total}");
+            return total;
         }
     }
 }
