@@ -1,0 +1,26 @@
+# VBA loop five
+
+Dim five As Range, i As Range
+Dim j As Long
+
+Set five = Nothing
+Set i = Nothing
+j = 0
+
+Sheets(""Top 10 BMC Macro"").Select
+ActiveSheet.Range(""$A1"", Range(""A1"").End(xlDown).End(xlToRight)).AutoFilter Field:=4, Criteria1:= _
+        ""OTH.GRIPPING TOOLS""
+
+Set five = Range(""A2"", Range(""A"" & Rows.Count).End(xlUp)).SpecialCells(xlCellTypeVisible)
+
+For Each i In five
+    j = j + 1
+    If j = 10 Or j = five.Count Then Exit For
+Next i
+
+Range(five(1), i).SpecialCells(xlCellTypeVisible).Copy
+Sheets(""TOP 10 By BMC"").Select
+    Range(""B55"").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
