@@ -2,40 +2,68 @@
 
 Dim productLineRange As Range, productRow As Range
 Dim rowCount As Long, destRowNum As Long
+Dim productNameVar as Variant
 Dim productName as String
 
+Set destRowNum = 3 ' the initial destination row number
 
-'
+
+' Array of all the product names to loop over
+Dim productNameArray(52) As String
+productNameArray(0) = "AUTO ACCESSORIES C"
+productNameArray(1) = "LBRCNTS AUTO FUELS"
+productNameArray(2) = "PLUMBING"
+productNameArray(3) = "CLAMPS"
+productNameArray(4) = "OTH.GRIPPING TOOLS"
+productNameArray(5) = "PLIERS"
+' TODO populate the rest
+
+Dim destRowNumIncrement as Integer
+Set destRowNumIncrement = 13
+
+
 ' productName and destRowNum are the only two things that change between each loop
+' Each productName is stored in the array, and destRowNum increases by 13 each time
+
+
 '
-Set productName = "PLIERS"
-Set destRowNum = 68
-
 ' Begin loop 
+'
 
-' Reset variables
-Set productLineRange = Nothing
-Set productRow = Nothing
-rowCount = 0
+Dim i As Long
 
-Sheets(""Top 10 BMC Macro"").Select
-ActiveSheet.Range(""$A1"", Range(""A1"").End(xlDown).End(xlToRight)).AutoFilter Field:=4, Criteria1:= _
-        productName
+For i = LBound(productNameArray) To UBound(productNameArray)
 
-Set productLineRange = Range(""A2"", Range(""A"" & Rows.Count).End(xlUp)).SpecialCells(xlCellTypeVisible)
+	Set productName = productNameArray(i)
 
-For Each productRow In productLineRange
-    rowCount = rowCount + 1
-    If rowCount = 10 Or rowCount = productLineRange.Count Then Exit For
-Next productRow
+	' Reset variables
+	Set productLineRange = Nothing
+	Set productRow = Nothing
+	rowCount = 0
+
+	Sheets(""Top 10 BMC Macro"").Select
+	ActiveSheet.Range(""$A1"", Range(""A1"").End(xlDown).End(xlToRight)).AutoFilter Field:=4, Criteria1:= _
+			productName
+
+	Set productLineRange = Range(""A2"", Range(""A"" & Rows.Count).End(xlUp)).SpecialCells(xlCellTypeVisible)
+
+	For Each productRow In productLineRange
+		rowCount = rowCount + 1
+		If rowCount = 10 Or rowCount = productLineRange.Count Then Exit For
+	Next productRow
 
 
-' productRow now holds the address of the last row of the product
+	' productRow now holds the address of the last row of the product
 
-Range(productLineRange(1), productRow).SpecialCells(xlCellTypeVisible).Copy
-Sheets(""TOP 10 By BMC"").Select
-    Range(""B"" & destRowNum).Select
-    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
-        :=False, Transpose:=False
-        
+	' Need to increment destRowNum by destRowNumIncrement
+	destRowNum = destRowNum + destRowNumIncrement
+
+	Range(productLineRange(1), productRow).SpecialCells(xlCellTypeVisible).Copy
+	Sheets(""TOP 10 By BMC"").Select
+		Range(""B"" & destRowNum).Select
+		Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+			:=False, Transpose:=False
+			
+		
+Next i
 ' End loop
