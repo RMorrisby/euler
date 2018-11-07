@@ -1,26 +1,41 @@
-# VBA loop six
+# VBA loop v2
 
-Dim six As Range, k As Range
-Dim l As Long
+Dim productLineRange As Range, productRow As Range
+Dim rowCount As Long, destRowNum As Long
+Dim productName as String
 
-Set six = Nothing
-Set k = Nothing
-l = 0
+
+'
+' productName and destRowNum are the only two things that change between each loop
+'
+Set productName = "PLIERS"
+Set destRowNum = 68
+
+' Begin loop 
+
+' Reset variables
+Set productLineRange = Nothing
+Set productRow = Nothing
+rowCount = 0
 
 Sheets(""Top 10 BMC Macro"").Select
 ActiveSheet.Range(""$A1"", Range(""A1"").End(xlDown).End(xlToRight)).AutoFilter Field:=4, Criteria1:= _
-        ""PLIERS""
+        productName
 
-Set six = Range(""A2"", Range(""A"" & Rows.Count).End(xlUp)).SpecialCells(xlCellTypeVisible)
+Set productLineRange = Range(""A2"", Range(""A"" & Rows.Count).End(xlUp)).SpecialCells(xlCellTypeVisible)
 
-For Each k In six
-    l = l + 1
-    If l = 10 Or l = six.Count Then Exit For
-Next k
+For Each productRow In productLineRange
+    rowCount = rowCount + 1
+    If rowCount = 10 Or rowCount = productLineRange.Count Then Exit For
+Next productRow
 
-Range(six(1), k).SpecialCells(xlCellTypeVisible).Copy
+
+' productRow now holds the address of the last row of the product
+
+Range(productLineRange(1), productRow).SpecialCells(xlCellTypeVisible).Copy
 Sheets(""TOP 10 By BMC"").Select
-    Range(""B68"").Select
+    Range(""B"" & destRowNum).Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
         
+' End loop
